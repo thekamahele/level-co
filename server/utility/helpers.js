@@ -10,8 +10,16 @@ module.exports = {
   },
 
   filterCCPayments: function(data) {
-    return filter(data, function(transaction) {
+    var transactions = {}
+
+    transactions.nonCredit = filter(data, function(transaction) {
       return transaction.merchant !== 'CC Payment' && transaction.merchant !== 'Credit Card Payment'
     })
+
+    transactions.credit = filter(data, function(transaction) {
+      return transaction.merchant === 'CC Payment' || transaction.merchant === 'Credit Card Payment'
+    })
+
+    return transactions
   }
 }
