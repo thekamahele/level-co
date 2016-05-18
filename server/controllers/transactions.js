@@ -1,0 +1,42 @@
+var request = require('request-promise')
+var helpers = require('../utility/helpers')
+
+var reqOptions = {
+  method: 'POST',
+  uri: 'https://prod-api.level-labs.com/api/v2/core/get-all-transactions',
+  body: {"args": {"uid": 1110590645, "token": "7AD5F25F9683727E22B04B4D5D4E72FD", "api-token": "AppTokenForInterview", "json-strict-mode": false, "json-verbose-response": false}},
+  json: true
+}
+
+module.exports = {
+  getAllTransactions: function(req, res) {
+    
+
+    request(reqOptions)
+      .then(function(transData) {
+        res.status(201).send(transData)
+      })
+      .catch(function(err) {
+        console.error(err)
+      })
+  },
+
+  filterTransactions: function(req, res) {
+    var filter = req.params.filter
+
+    if(filter === 'donuts') {
+      request(reqOptions)
+        .then(function(transData) {
+          var filteredData = helpers.filterDonuts(transData.transactions)
+          res.status(200).send(filteredData)
+        })
+        .catch(function(err) {
+          console.error(err)
+        })
+    }
+
+    // if(filter === 'credit') {
+    //  
+    // }
+  }
+}
