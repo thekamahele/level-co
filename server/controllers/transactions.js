@@ -24,19 +24,21 @@ module.exports = {
   filterTransactions: function(req, res) {
     var filter = req.params.filter
 
-    if(filter === 'donuts') {
-      request(reqOptions)
-        .then(function(transData) {
-          var filteredData = helpers.filterDonuts(transData.transactions)
-          res.status(200).send(filteredData)
-        })
-        .catch(function(err) {
-          console.error(err)
-        })
-    }
+    request(reqOptions)
+      .then(function(transData) {
+        var filteredData;
 
-    // if(filter === 'credit') {
-    //  
-    // }
-  }
+        if(filter === 'donuts') {
+          filteredData = helpers.filterDonuts(transData.transactions)
+        }
+        if (filter === 'credit') {
+          filteredData = helpers.filterCCPayments(transData.transactions)
+        }
+
+        res.status(200).send(filteredData)
+      })
+      .catch(function(err) {
+        console.error(err)
+      })
+    }
 }
