@@ -10,15 +10,28 @@ var reqOptions = {
 
 module.exports = {
   getAllTransactions: function(req, res) {
-    
 
-    request(reqOptions)
-      .then(function(transData) {
-        res.status(201).send(transData)
+    // request(reqOptions)
+    //   .then(function(transData) {
+    //     res.status(201).send(transData)
+    //   })
+    //   .catch(function(err) {
+    //     console.error(err)
+    //   })
+
+    return request(reqOptions)
+  },
+
+  unfilteredTransactions: function(req, res) {
+    module.exports.getAllTransactions()
+      .then(function(allData) {
+        console.log('all', allData)
+        res.status(201).send(allData)
       })
       .catch(function(err) {
-        console.error(err)
+        res.send(err)
       })
+
   },
 
   filterTransactions: function(req, res) {
@@ -38,7 +51,7 @@ module.exports = {
         res.status(200).send(filteredData)
       })
       .catch(function(err) {
-        console.error(err)
+        res.send(err)
       })
     }
 }
