@@ -5,3 +5,4 @@ tmp/
 *.DS_Store
 dist/
 out/
+server/apiConfig.js

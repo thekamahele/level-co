@@ -1,4 +1,4 @@
-var filter = require('lodash/collection/filter')
+var filter = require('lodash/filter')
 
 //could refactor to accept merchant name
 

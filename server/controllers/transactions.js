@@ -1,10 +1,17 @@
 var request = require('request-promise')
 var helpers = require('../utility/helpers')
+var apiConfig = require('../apiConfig')
 
 var reqOptions = {
   method: 'POST',
-  uri: 'https://prod-api.level-labs.com/api/v2/core/get-all-transactions',
-  body: {"args": {"uid": 1110590645, "token": "7AD5F25F9683727E22B04B4D5D4E72FD", "api-token": "AppTokenForInterview", "json-strict-mode": false, "json-verbose-response": false}},
+  uri: apiConfig.apiRoutes.getAll,
+  body: {"args": {
+      "uid": apiConfig.apiKey.uid,
+      "token": apiConfig.apiKey.token,
+      "api-token": apiConfig.apiKey.apiToken,
+      "json-strict-mode": false, 
+      "json-verbose-response": false}
+  },
   json: true
 }
 

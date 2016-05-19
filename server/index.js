@@ -15,14 +15,14 @@ app.use(require("webpack-hot-middleware")(compiler));
 app.set('port', (process.env.PORT || 3000))
 app.use(express.static(path.resolve(__dirname + '/../public')))
 
-app.get('*', function response(req, res) {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
-});
 
 var apiRouter = new express.Router()
 app.use('/api', apiRouter)
 require('./routes/routes.js')(apiRouter)
 
+app.get('*', function response(req, res) {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 app.listen(app.get('port'), function() {
     console.log("Node app is running at localhost:" + app.get('port'))
