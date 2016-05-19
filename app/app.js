@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import Header from './components/header'
+import { Router, browserHistory } from 'react-router'
+import routes from './config/Routes'
 
-ReactDOM.render(<Header></Header>, document.getElementById('app'))
+ReactDOM.render(
+  <Router history={ browserHistory }>{routes}</Router>,
+  document.getElementById('app')
+)
