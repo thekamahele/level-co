@@ -1,5 +1,9 @@
-const centocentsToDollars = (amount) => {
+export const centocentsToDollars = (amount) => {
   return amount/10000
+}
+
+export const roundToTwoDecimals = (number) => {
+  return Number(number.toFixed(2))
 }
 
 const getMonthTotals = (data) => {
@@ -27,7 +31,18 @@ const getMonthTotals = (data) => {
 
 }
 
-const getAverage = (data) => {
+const convertIntoArray = (object) => {
+  const monthSummaries = []
+  for(let key in object) {
+    object[key].month = key
+    object[key].spending = Number((object[key].spending).toFixed(2))
+    object[key].income = Number((object[key].income).toFixed(2))
+    monthSummaries.push(object[key])
+  }
+  return monthSummaries
+}
+
+export const getAverage = (data) => {
   const numOfMonths = Object.keys(data).length
   let spendingTotal = 0
   let incomeTotal = 0
@@ -44,7 +59,7 @@ const getAverage = (data) => {
 }
 
 export const processData = (data) => {
-  const monthTotals = getMonthTotals(data)
+  const monthTotals = convertIntoArray(getMonthTotals(data))
   const average = getAverage(monthTotals)
 
   return {

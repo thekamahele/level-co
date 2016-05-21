@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const getTransactions = (filter) => {
-  let requestURL = `/api/allTransactions/${filter}`
+  let requestURL = filter ? `/api/allTransactions/${filter}` : '/api/allTransactions'
   return axios.get(requestURL)
 }
 
