@@ -1,18 +1,14 @@
 import React from 'react'
-import { Route, IndexRoute } from 'react-router'
+import { Route } from 'react-router'
 import Main from '../components/Main'
-import Transactions from '../components/TransactionsListView'
+import SummaryView from '../components/SummaryView'
+import Projections from '../components/Projections'
+import CreditPayments from '../components/CreditPayments'
 
 export default (
   <Route path="/" component={Main}>
-    <Route path="/allTransactions" component={Transactions} />
-
+    <Route path="/allTransactions" component={SummaryView} />
+    <Route path="/projections" component={Projections} />
+    <Route path="/creditPayments" component={CreditPayments} />
   </Route>
 );
-
-// <Route path="/allTransactions" component={Transactions}>
-//   <Route path="/donuts" component={Donuts}/>
-//   <Route path="/credit" component={Credit}/>
-// </Route>
-// <Route path="/projections" component={Projections} />
-//   <IndexRoute component={Home} />
