@@ -7,15 +7,15 @@ export const roundToTwoDecimals = (number) => {
 }
 
 const getMonthTotals = (data) => {
-  let monthNames = ["January", "February", "March", "April", "May", "June",
+  const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ]
 
   return data.reduce((memo, current) => {
-    let date = new Date(current['transaction-time'])
-    let month = monthNames[date.getMonth()]
-    let year = date.getFullYear()
-    let monthYear = `${month}-${year}`
+    const date = new Date(current['transaction-time'])
+    const month = monthNames[date.getMonth()]
+    const year = date.getFullYear()
+    const monthYear = `${month}-${year}`
 
     if(monthYear in memo) {
       if(current.amount > 0) {
@@ -35,8 +35,8 @@ const convertIntoArray = (object) => {
   const monthSummaries = []
   for(let key in object) {
     object[key].month = key
-    object[key].spending = Number((object[key].spending).toFixed(2))
-    object[key].income = Number((object[key].income).toFixed(2))
+    object[key].spending = roundToTwoDecimals(object[key].spending)
+    object[key].income = roundToTwoDecimals(object[key].income)
     monthSummaries.push(object[key])
   }
   return monthSummaries
@@ -53,8 +53,8 @@ export const getAverage = (data) => {
   }
 
   return {
-    spending: Number((spendingTotal/numOfMonths).toFixed(2)),
-    income: Number((incomeTotal/numOfMonths).toFixed(2))
+    spending: roundToTwoDecimals(spendingTotal/numOfMonths),
+    income: roundToTwoDecimals(incomeTotal/numOfMonths)
   }
 }
 

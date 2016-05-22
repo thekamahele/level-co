@@ -23,7 +23,7 @@ class CreditPayments extends Component {
   }
 
   render() {
-    const {payments} = this.state
+    const { payments } = this.state
     const transactionList = payments.map((transaction, i) => {
       if (transaction.amount > 0) {
         return <TransactionEntryView key={i} date={transaction['transaction-time']} amount={transaction.amount}/>

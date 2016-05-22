@@ -64,7 +64,7 @@ class SummaryView extends Component {
   }
 
   render() {
-    const {transactionData, donutData, creditData, currentTab, isLoading} = this.state
+    const { transactionData, donutData, creditData, currentTab, isLoading } = this.state
     return (
       <div style={styles.container}>
 

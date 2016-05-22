@@ -1,8 +1,8 @@
-var trans = require('../controllers/transactions')
-var proj = require('../controllers/projections')
+import { unfilteredTransactions, filterTransactions } from '../controllers/transactions'
+import { projectedSpending } from '../controllers/projections'
 
-module.exports = function routes(app) {
-  app.get('/allTransactions', trans.unfilteredTransactions)
-  app.get('/allTransactions/:filter', trans.filterTransactions)
-  app.get('/projections', proj.projectedSpending)
+export function routes(app) {
+  app.get('/allTransactions', unfilteredTransactions)
+  app.get('/allTransactions/:filter', filterTransactions)
+  app.get('/projections', projectedSpending)
 }

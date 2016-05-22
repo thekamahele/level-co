@@ -5,15 +5,16 @@ export const filterDonuts = (data) => {
 }
 
 export const filterCCPayments = (data) => {
-  var transactions = {}
-
-  transactions.nonCredit = data.filter((transaction) => {
+  const nonCredit = data.filter((transaction) => {
     return transaction.merchant !== 'CC Payment' && transaction.merchant !== 'Credit Card Payment'
   })
 
-  transactions.credit = data.filter((transaction) => {
+  const credit = data.filter((transaction) => {
     return transaction.merchant === 'CC Payment' || transaction.merchant === 'Credit Card Payment'
   })
 
-  return transactions
+  return {
+    nonCredit,
+    credit
+  }
 }
