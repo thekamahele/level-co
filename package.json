@@ -2,8 +2,7 @@
   "name": "level-co",
   "version": "0.0.1",
   "scripts": {
-    "dev": "node --exec babel-node server/index.js",
-    "start": "node server/index.js",
+    "start": "babel-node server/index.js",
     "build": "webpack"
   },
   "dependencies": {

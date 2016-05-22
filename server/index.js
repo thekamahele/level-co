@@ -1,16 +1,18 @@
-// import express from 'express'
-var express = require('express')
-var path = require('path')
-var app = express()
-var webpack = require('webpack');
-var webpackConfig = require('../webpack.config');
-var compiler = webpack(webpackConfig);
+import express from 'express'
+import path from 'path'
+import webpack from 'webpack'
+import webpackConfig from '../webpack.config'
+import webpackDev from 'webpack-dev-middleware'
+import webpackHot from 'webpack-hot-middleware'
 
-app.use(require("webpack-dev-middleware")(compiler, {
+const app = express()
+const compiler = webpack(webpackConfig);
+
+app.use(webpackDev(compiler, {
     noInfo: true, publicPath: webpackConfig.output.publicPath
 }));
 
-app.use(require("webpack-hot-middleware")(compiler));
+app.use(webpackHot(compiler));
 
 app.set('port', (process.env.PORT || 3000))
 app.use(express.static(path.resolve(__dirname + '/../public')))

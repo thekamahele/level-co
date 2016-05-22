@@ -1,5 +1,5 @@
-var request = require('request-promise')
-var helpers = require('../utility/helpers')
+import request from 'request-promise'
+import {filterCCPayments, filterDonuts} from '../utility/helpers'
 var apiConfig = require('../apiConfig')
 
 var reqOptions = {
@@ -10,29 +10,20 @@ var reqOptions = {
       "token": apiConfig.apiKey.token,
       "api-token": apiConfig.apiKey.apiToken,
       "json-strict-mode": false, 
-      "json-verbose-response": false}
+      "json-verbose-response": false
+    }
   },
   json: true
 }
 
 module.exports = {
   getAllTransactions: function(req, res) {
-
-    // request(reqOptions)
-    //   .then(function(transData) {
-    //     res.status(201).send(transData)
-    //   })
-    //   .catch(function(err) {
-    //     console.error(err)
-    //   })
-
     return request(reqOptions)
   },
 
   unfilteredTransactions: function(req, res) {
     module.exports.getAllTransactions()
       .then(function(allData) {
-        console.log('all', allData)
         res.status(201).send(allData)
       })
       .catch(function(err) {
@@ -49,10 +40,10 @@ module.exports = {
         var filteredData;
 
         if(filter === 'donuts') {
-          filteredData = helpers.filterDonuts(transData.transactions)
+          filteredData = filterDonuts(transData.transactions)
         }
         if (filter === 'credit') {
-          filteredData = helpers.filterCCPayments(transData.transactions)
+          filteredData = filterCCPayments(transData.transactions)
         }
 
         res.status(200).send(filteredData)

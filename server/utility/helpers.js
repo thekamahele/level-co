@@ -1,25 +1,19 @@
-var filter = require('lodash/filter')
+export const filterDonuts = (data) => {
+  return data.filter((transaction) => {
+    return transaction.merchant !== 'Dunkin #336784' && transaction.merchant !== 'Krispy Kreme Donuts'
+  })
+}
 
-//could refactor to accept merchant name
+export const filterCCPayments = (data) => {
+  var transactions = {}
 
-module.exports = {
-  filterDonuts: function(data) {
-    return filter(data, function(transaction) {
-      return transaction.merchant !== 'Dunkin #336784' && transaction.merchant !== 'Krispy Kreme Donuts'
-    })
-  },
+  transactions.nonCredit = data.filter((transaction) => {
+    return transaction.merchant !== 'CC Payment' && transaction.merchant !== 'Credit Card Payment'
+  })
 
-  filterCCPayments: function(data) {
-    var transactions = {}
+  transactions.credit = data.filter((transaction) => {
+    return transaction.merchant === 'CC Payment' || transaction.merchant === 'Credit Card Payment'
+  })
 
-    transactions.nonCredit = filter(data, function(transaction) {
-      return transaction.merchant !== 'CC Payment' && transaction.merchant !== 'Credit Card Payment'
-    })
-
-    transactions.credit = filter(data, function(transaction) {
-      return transaction.merchant === 'CC Payment' || transaction.merchant === 'Credit Card Payment'
-    })
-
-    return transactions
-  }
+  return transactions
 }
