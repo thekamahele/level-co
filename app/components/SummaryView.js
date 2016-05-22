@@ -2,30 +2,7 @@ import React, { Component } from 'react'
 import TransactionsListView from './TransactionsListView'
 import { getTransactions } from '../utility/helpers'
 import { processData } from '../utility/processor'
-
-const styles = {
-  container: {
-    marginTop: '25px',
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center'
-  },
-  summary: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: '10px',
-    alignItems: 'center'
-  },
-  button: {
-    borderRadius: '5px',
-    background: 'darkgrey',
-    color: 'white',
-    border: 'none',
-    padding: '5px',
-    margin: '5px',
-    fontSize: '.8em'
-  }
-}
+import { styles } from '../styles/styles'
 
 class SummaryView extends Component {
 
@@ -66,7 +43,6 @@ class SummaryView extends Component {
     this.loadingData()
     getTransactions('credit')
       .then((response) => {
-        console.log(response.data.credit)
         this.setState({
           creditData: processData(response.data.nonCredit),
           currentTab: 'credit',
@@ -111,7 +87,6 @@ class SummaryView extends Component {
         }
       </div>
     )
-
   }
 }
 

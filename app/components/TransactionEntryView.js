@@ -1,19 +1,11 @@
 import React from 'react'
 import { centocentsToDollars } from '../utility/processor'
-
-const styles = {
-  row: {
-    borderBottom: 'solid 1px lightgray',
-    marginBottom: '5px',
-    padding: '10px',
-    color: 'gray'
-  }
-}
+import { styles } from '../styles/styles'
 
 const TransactionEntryView = ({spending, month, income, date, amount}) => {
-  if(date && amount) {
+  if (date && amount) {
     let formatDate = new Date(date).toLocaleDateString('en-US')
-    return(
+    return (
       <tr style={styles.row}>
         <td style={styles.row}>{formatDate}</td>
         <td style={styles.row}>${centocentsToDollars(amount)}</td>

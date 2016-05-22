@@ -1,16 +1,7 @@
 import React, { Component } from 'react'
 import { getProjections } from '../utility/helpers'
 import { processData, roundToTwoDecimals } from '../utility/processor'
-
-const styles = {
-  container: {
-    marginTop: '25px',
-    textAlign: 'center'
-  },
-  text: {
-    fontSize: '1.2em'
-  }
-}
+import { styles } from '../styles/styles'
 
 class Projections extends Component {
   constructor(props) {

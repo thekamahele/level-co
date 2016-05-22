@@ -2,8 +2,8 @@
   "name": "level-co",
   "version": "0.0.1",
   "scripts": {
-    "dev": "nodemon --exec babel-node server/index.js",
-    "start": "nodemon server/index.js",
+    "dev": "node --exec babel-node server/index.js",
+    "start": "node server/index.js",
     "build": "webpack"
   },
   "dependencies": {
