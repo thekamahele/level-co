@@ -69,7 +69,7 @@ class SummaryView extends Component {
       <div style={styles.container}>
 
         <div style={styles.summary}>
-          <div>Filters:</div>
+          <div style={{fontSize: '.8em'}}>Filters:</div>
           <button style={styles.button} onClick={this.allTransactions.bind(this)}>All Transactions</button>
           <button style={styles.button} onClick={this.ignoreDonuts.bind(this)}>Ignore Donuts</button>
           <button style={styles.button} onClick={this.ignoreCredit.bind(this)}>Ignore Credit</button>

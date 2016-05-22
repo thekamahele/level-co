@@ -18,7 +18,7 @@ export const styles = {
     border: 'none',
     padding: '5px',
     margin: '5px',
-    fontSize: '.8em'
+    fontSize: '.4em'
   },
   container: {
     marginTop: '25px',
