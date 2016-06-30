@@ -3,7 +3,7 @@ import React from 'react'
 import expect from 'expect'
 import { shallow, mount } from 'enzyme'
 import Main from '../Main'
-import Header from '../header'
+import Header from '../Header'
 import Options from '../Options'
 
 describe('Main Component', () => {
