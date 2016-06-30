@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "start": "babel-node server/index.js",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "mocha './app/**/test/*.js' --compilers js:babel-register"
   },
   "dependencies": {
     "axios": "^0.11.1",
@@ -23,6 +24,12 @@
   "devDependencies": {
     "babel-cli": "^6.8.0",
     "babel-preset-react-hmre": "^1.1.1",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.3.0",
+    "expect": "^1.20.2",
+    "mocha": "^2.5.3",
+    "react-addons-test-utils": "^15.1.0",
     "react-hot-loader": "^1.3.0",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
