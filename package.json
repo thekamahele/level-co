@@ -2,8 +2,11 @@
   "name": "level-co",
   "version": "0.0.1",
   "scripts": {
-    "start": "babel-node server/index.js",
-    "build": "webpack",
+    "start": "npm run build && node ./build/index.js",
+    "build": "npm run clean && npm run build-server",
+    "build-server": "babel -d ./build ./server -s",
+    "clean": "rm -rf build && mkdir build",
+    "dev": "babel-node server/index.js",
     "test": "mocha './app/**/test/*.js' --compilers js:babel-register"
   },
   "dependencies": {
